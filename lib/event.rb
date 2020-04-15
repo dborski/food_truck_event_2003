@@ -17,8 +17,12 @@ class Event
   def food_trucks_that_sell(item)
     trucks_that_sell = []
     @food_trucks.each do |truck|
-      trucks_that_sell << truck if truck.item_stock.include?(item)
+      trucks_that_sell << truck if truck.inventory.include?(item)
     end
     trucks_that_sell
+  end
+
+  def total_inventory
+    ###Not cool bro, jk
   end
 end
