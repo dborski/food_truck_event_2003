@@ -11,13 +11,11 @@ class ItemTest < Minitest::Test
   end
 
   def test_it_exists
-    @item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
 
     assert_instance_of Item, @item1
   end
 
   def test_it_has_readable_attributes
-    @item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
 
     assert_equal 'Peach Pie (Slice)', @item1.name
     assert_equal "$3.75", @item1.price
@@ -34,25 +32,7 @@ end
   # and return the quantity of items. Any item not in stock should return `0` by default.
   #
   # Use TDD to create a `FoodTruck` class that responds to the following interaction pattern:
-  #
-  # ```ruby
-  #require './lib/item'
-  # #=> true
-  #
-  #require './lib/food_truck'
-  # #=> true
-  #
-  #item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
-  # #=> #<Item:0x007f9c56740d48...>
-  #
-  #item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
-  # #=> #<Item:0x007f9c565c0ce8...>
-  #
-  #item2.name
-  # #=> "Apple Pie (Slice)"
-  #
-  #item2.price
-  # #=> 2.50
+
   #
   #food_truck = FoodTruck.new("Rocky Mountain Pies")
   # #=> #<FoodTruck:0x00007f85683152f0...>
