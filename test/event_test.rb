@@ -17,6 +17,14 @@ class EventTest < Minitest::Test
     @item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
     @item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
     @item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
+    @food_truck1.stock(@item1, 35)
+    @food_truck1.stock(@item2, 7)
+    @food_truck2.stock(@item4, 50)
+    @food_truck2.stock(@item3, 25)
+    @food_truck3.stock(@item1, 65)
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
   end
 
   def test_it_exists
@@ -28,68 +36,15 @@ class EventTest < Minitest::Test
   end
 
   def test_can_add_food_trucks
-    assert_equal [], @event.food_trucks
-
-    @food_truck1.stock(@item1, 35)
-    @food_truck1.stock(@item2, 7)
-    @food_truck2.stock(@item4, 50)
-    @food_truck2.stock(@item3, 25)
-    @food_truck3.stock(@item1, 65)
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck2)
-    @event.add_food_truck(@food_truck3)
-
     assert_equal [@food_truck1, @food_truck2, @food_truck3], @event.food_trucks
   end
 
   def test_food_truck_names
-    @food_truck1.stock(@item1, 35)
-    @food_truck1.stock(@item2, 7)
-    @food_truck2.stock(@item4, 50)
-    @food_truck2.stock(@item3, 25)
-    @food_truck3.stock(@item1, 65)
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck2)
-    @event.add_food_truck(@food_truck3)
-
     assert_equal ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"], @event.food_truck_names
   end
 
   def test_food_trucks_that_sell_certain_item
-    @food_truck1.stock(@item1, 35)
-    @food_truck1.stock(@item2, 7)
-    @food_truck2.stock(@item4, 50)
-    @food_truck2.stock(@item3, 25)
-    @food_truck3.stock(@item1, 65)
-    @event.add_food_truck(@food_truck1)
-    @event.add_food_truck(@food_truck2)
-    @event.add_food_truck(@food_truck3)
-
     assert_equal [@food_truck1, @food_truck3], @event.food_trucks_that_sell(@item1)
     assert_equal [@food_truck2], @event.food_trucks_that_sell(@item4)
   end
 end
-
-
-# ## Iteration 2 - Event and FoodTrucks
-#
-# A FoodTruck will be able to calculate their `potential_revenue` -
-# the sum of all their items' price * quantity.
-#
-# A Event is responsible for keeping track of FoodTrucks.
-# It should have a method called `food_truck_names` that returns an array of all the FoodTruck's names.
-#
-# Additionally, the Event should have a method called `food_trucks_that_sell` that takes
-# an argument of an item represented as a String. It will return a list of FoodTrucks that
-# have that item in stock.
-#
-# Use TDD to create a `Event` class that responds to the following interaction pattern:
-
-# food_truck1.potential_revenue
-# #=> 148.75
-#
-# food_truck2.potential_revenue
-# #=> 345.00
-#
-# food_truck3.potential_revenue
-# #=> 243.75
