@@ -65,27 +65,3 @@ class FoodTruckTest < Minitest::Test
     assert_equal 243.75, @food_truck3.potential_revenue
   end
 end
-
-# ## Iteration 2 - Event and FoodTrucks
-#
-# A FoodTruck will be able to calculate their `potential_revenue` -
-# the sum of all their items' price * quantity.
-#
-# A Event is responsible for keeping track of FoodTrucks.
-# It should have a method called `food_truck_names` that returns an array of all the FoodTruck's names.
-#
-# Additionally, the Event should have a method called `food_trucks_that_sell` that takes
-# an argument of an item represented as a String. It will return a list of FoodTrucks that
-# have that item in stock.
-#
-# Use TDD to create a `Event` class that responds to the following interaction pattern:
-#
-
-# food_truck1.potential_revenue
-# #=> 148.75
-#
-# food_truck2.potential_revenue
-# #=> 345.00
-#
-# food_truck3.potential_revenue
-# #=> 243.75
