@@ -14,4 +14,11 @@ class Event
     @food_trucks.map {|truck| truck.name}
   end
 
+  def food_trucks_that_sell(item)
+    trucks_that_sell = []
+    @food_trucks.each do |truck|
+      trucks_that_sell << truck if truck.item_stock.include?(item)
+    end
+    trucks_that_sell
+  end
 end
